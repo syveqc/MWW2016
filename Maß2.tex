@@ -1,0 +1,81 @@
+%general
+\documentclass[a4paper,oneside,10pt]{report}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+%\usepackage[ansinew]{inputenc}
+\usepackage[pdftex]{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{esvect}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{mathrsfs} 
+\usepackage{stmaryrd}
+\usepackage{dsfont}
+\usepackage{comment}
+\usepackage{cancel}
+\pagestyle{fancy}
+%\fancyhf{}
+\geometry{a4paper, top=40mm, bottom=30mm, left=30mm, right=30mm}
+%\lhead{Maß- und Wahrscheinlichkeitstheorie}
+%\rhead{\thechapter.\thesection}
+\newcommand{\zz}{$\mathrm{Z\kern-.5em\raise-0.5ex\hbox{Z}}$}
+\newcommand{\arge }{\flushright$\Box$.\flushleft}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\mathbb{V}}
+\let\L\relax
+\newcommand{\L}{\mathfrak{L}}
+\newcommand{\B}{\mathfrak{B}}
+\renewcommand{\S}{\mathfrak{S}}
+\newcommand{\In}{ {i \in I}}
+\let\P\relax
+\newcommand{\P}{\mathbb{P}}
+\newcommand{\ms}[1]{\mathfrak{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\snorm}[1]{\norm{#1}_\infty}
+\newcommand{\Li}{\mathcal{L}_\infty}
+\newcommand{\schircherarrow}{\rotatebox[origin=c]{-55}{$\Downarrow$}}
+
+\newtheorem{defi}{Definition}[section]
+\newtheorem{satz}[defi]{Satz}
+\newtheorem{lemma}[defi]{Lemma}
+
+\theoremstyle{remark}
+\newtheorem*{bew}{Beweis}
+
+\theoremstyle{definition}
+\newtheorem*{bem}{Bemerkung}
+\newtheorem{bsp}{Beispiel}[section]
+
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\esssup}{ess\:\sup}
+\DeclareMathOperator{\Cov}{Cov}
+
+\setcounter{section}{0}
+
+%\excludecomment{bew}
+%\excludecomment{bem}
+%\excludecomment{defi}
+%\excludecomment{bsp}
+%\excludecomment{satz}
+%\excludecomment{lemma}
+\begin{document}
+	%\title{Maß- und Wahrscheinlichkeitstheorie}
+	\tableofcontents
+	
+	\chapter{$\L_p$ Räume}
+	\input{chapter1/lpraume}
+
+	
+	
+\end{document}

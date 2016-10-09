@@ -1,0 +1,301 @@
+\section{Voraussetzungen}
+	Frage: Wann gibt es für zwei Maßfunktionen $\mu, \nu$ auf dem selben Messraum so, dass
+	\[ \nu(A) = \int_A fd\mu? \]
+	\begin{satz}[Radon-Nikodym]
+		Seien $\mu$ eine Maßfunktion und $f$ eine messbare Funkion. Dann ist durch
+		\[ \nu(A) = \int_A fd\mu \]
+		ein Maß definiert und es ist äquivalent
+		\[ \mu \text{ ist sigmaendlich} \Leftrightarrow \nu \text{ absolutstetig bezüglich }\mu. \]
+	\end{satz}
+	
+	\begin{bew}
+		wird später bewiesen, wir benötigen ihn nur in diesem Kapitel.	
+	\end{bew}
+
+	\begin{defi}
+		Es ist
+		\[ \L_p=\L_p(\Omega, \S, \mu) = \{f: (\Omega, \S)\to(\R, \B), \int |f|^pd\mu <\infty\}. \]
+		Weiters ist die $p$-Norm
+		\[ \norm{f}_p:=\left(\int|f|^pd\mu\right)^\frac{1}{p} \]
+		für $0<p<\infty$.
+	\end{defi}
+
+	\begin{satz}
+		Für $p\ge 1$ ist $\norm{\cdot}_p$ eine Seminorm auf $\L_p$. Für $0<p<1$ ist $\norm{\cdot}_p$ eine Pseudonorm. $\L_p$ sind weiters Vektorräume (über $\R$). 
+	\end{satz}
+
+	\begin{bew}
+		Dass $\norm{\cdot}_p$ Semi/Pseudonormen sind, wird durch die folgenden Hilfssätzen bewiesen.\newline
+		Seien also $f,g\in\L_p$, $c\in\R$. Dann ist wegen
+		\[ \norm{cf}=|c|\norm{f} \]
+		auch $cf\in\L_p$. Weiters gilt
+		\[ |f+g|^p\le(|f|+|g|)^p\le(2\cdot\max(|f|, |g|))^p = 2^p\max(|f|^p, |g|^p)\le 2^p(|f|^p+|g|^p), \]
+		womit 
+		\[\norm{f+g}_p^p\le 2^p(\norm{f}_p^p+\norm{g}_p^p)\]
+		folgt, also $f+g\in\L_p$. 
+	\end{bew}
+
+	\begin{lemma}[Hilfssatz 1, Ungleichung von Jensen]
+		Sei $(\Omega, \S, \P)$ ein Wahrscheinlichkeitsraum, $f\in\L_1(\Omega, \S, \P)$, $h: \R\to\R$ konvex. Dann gilt
+		\[ \int h\circ f d\P\ge h\left(\int fd\P\right). \]
+	\end{lemma}
+
+	\begin{bew}
+		Sei 
+		\[ m=\int fd\P. \]
+		Nun gilt, da $h$ konvex ist
+		\[ h(x)\ge h(m)+h'(m)(x-m) \]
+		also
+		\[ h\circ f\ge h(m)+h'(m)(f-m) \]
+		\[ \int h\circ fd\P\ge h(m)+h'(m)\left(\underbrace{\int fd\P}_{m} - m\right) = h(m). \]
+	\end{bew}
+
+	\begin{lemma}[Hilfssatz 2, Ungleichung von Hölder]
+		Sei $(\Omega, \S, \mu)$ ein Maßraum, $f,g\ge0 \in\L_1(\Omega, \S, \mu)$ und $0<\alpha<1$. Dann ist
+		\[ \int f^\alpha g^{1-\alpha}d\mu \le \left(\int fd\mu\right)^\alpha\left(\int gd\mu\right)^{1-\alpha}. \]
+	\end{lemma}
+
+	\begin{bew}
+		Fall 1: $\int fd\mu=0$. Also verschwindet $f$ fast überall, also auch $f^\alpha$, womit beide Seiten der Ungleichung gleich 0 sind. \newline
+		Fall 2: $\int fd\mu>0$. Wir können nun das Wahrscheinlichkeitsmaß
+		\[ \P(A):=\frac{\int_A fd\mu}{\int fd\mu} \]
+		definieren. Behauptung:
+		\[ \frac{\left(\int gd\mu\right)^{1-\alpha}}{\left(\int fd\mu\right)^{1-\alpha}}\ge \frac{\int f^\alpha g^{1-\alpha}d \mu}{\int fd\mu} \]
+		\[ \left(\int \frac{g}{f}d\P\right)^{1-\alpha}\ge \int \left(\frac{g}{f}\right)^{1-\alpha}d\P \]
+		\[ \int\left(\left(\frac{g}{f}\right)^{1-\alpha}\right)^\frac{1}{1-\alpha}d\P\ge\left(\int\left(\frac{g}{f}\right)^{1-\alpha} d\P\right)^\frac{1}{1-\alpha} \]
+		Wir setzen nun $h(x)=x^\frac{1}{1-\alpha}$, also $h$ konvex. Dann setzen wir in der Ungleichung von Jensen $f:=\left(\frac{g}{f}\right)^{1-\alpha}$ und die Ungleichung ist gezeigt. 
+	\end{bew}
+
+	\begin{satz}[Alternative Formulierung der Ungleichung von Hölder]
+		Ist $f\in\L_p, g\in\L_q$ mit $\frac{1}{p}+\frac{1}{q}=1$, also $q=\frac{p}{p-1}$, so ist $f\cdot g\in\L_1$ und 
+		\[ \left|\int fg\right|\le \norm{f}_p\cdot\norm{g}_q. \]
+	\end{satz}
+
+	\begin{bew}
+		Wir setzen $\alpha:=\frac{1}{p}, f:=|f|^p, g:=|g|^p$. 
+	\end{bew}
+
+	\begin{bem}
+		Die Hölderungleichung gilt auch für $p=1, q=\infty$ $\rightarrow$ HÜ
+	\end{bem}
+	
+	\begin{satz} [Hilffsatz 3, Dreiecksungleichung der $p$-Norm, Ungleichung von Minkowski]
+		Für $f,g\in\L_p$ und $1\le p<\infty$ ist
+		\[ \norm{f+g}_p\le \norm{f}_p+\norm{g}_p. \]
+	\end{satz}
+
+	\begin{bew}
+		Fall 1: $\norm{f+g}_p=0$, in diesem Fall sind wir fertig.
+		Fall 2: $\norm{f+g}_p\neq 0$. Es gilt:
+		\[ \norm{f+g}_p^p=\int |f+g|^p=\int|f+g|\cdot|f+g|^{p-1}\le \int (|f|+|g|)|f+g|^{p-1}\le\int|f|\cdot|f+g|^{p-1} \]
+		Mit der Hölderschen Ungleichung folgt dann
+		\[ \int|f|\cdot|f+g|^{p-1} \le \norm{f}_p\cdot\norm{|f+g|^{p-1}}+\norm{g}_p\cdot\norm{|f+g|^{p-1}}_q \]
+		Nun ist
+		\[ \norm{|f+g|^p}_q = \left(\int|f+g|^{(p-1)\frac{p}{p-1}}\right)^\frac{p-1}{p} = \left(\int|f+g|^p\right)^\frac{p-1}{p} = \norm{f+g}_p^{p-1} \]
+		also insgesamt
+		\[ \norm{f+g}_p^p\le (\norm{f}_p+\norm{g}_p)\cdot \norm{f+g}_p^{p-1}. \]
+	\end{bew}
+
+	\begin{defi}
+		Es ist 
+		\[ L_p=\L_p\setminus\sim \]
+		wobei 
+		\[ f\sim g\Leftrightarrow f=g\:\:\mu\text{ fast überall}. \]
+		Damit ist $(L_p, \norm{\cdot}_p)$ ein normierter Vektorraum. 
+	\end{defi}
+
+	\begin{lemma}[Hilfssatz]
+		Sind $x,y\ge 0$, $0<p<1$, so gilt
+		\[ (x+y)^p\le x^p+y^p. \]
+	\end{lemma}
+
+	\begin{bew}
+		Sei $f(x):= (x+y)^p-x^p$. Dann ist
+		\[ f'(x)=p((x+y)^p-x^p-1)\le 0 \]
+		also $f$ monoton fallend. 
+	\end{bew}
+
+	\begin{satz}
+		Für $0<p<1$ ist $\norm{\cdot}_p$ eine Norm.
+	\end{satz}
+
+	\begin{bew}
+		Mit dem Hilfssatz folgt
+		\[ \norm{f+g}_p^p=\int|f+g|^p\le\int |f|^p+\int|g|^p = \norm{f}_p+\norm{g}_p. \]
+	\end{bew}
+	
+	\begin{satz}
+		Auf $L_p$ ist $d(f,g)=\norm{f-g}_p^p$ eine Metrik.
+	\end{satz}
+
+	\begin{bew}
+		\[ \norm{f+g}_p\le \left(\norm{f}_p^p+\norm{g}_p^p\right)^\frac{1}{p}\le 2^\frac{1}{p}\left(\frac{\norm{f}_p^p+\norm{g}_p^p}{2}\right)^\frac{1}{p}\le 2^\frac{1}{p}\left(\frac{\norm{f}_p+\norm{g}_p}{2}\right) \]
+		womit wir mit $c=2^{\frac{1}{p}-1}$ die Behauptung erhalten.
+	\end{bew}
+
+	\begin{defi}
+		Sei $(f_n)$ eine Folge, $f_n\in\L_p$. Dann sagen wir, $(f_n)$ konvergiert im $p$-ten Mittel gegen $f\in\L_p$, $f_n\to_p f$, wenn 
+		\[ \norm{f_n-f}_p\to 0. \]
+		Analog definiert man eine Cauchyfolge im $p-$ten Mittel. 
+	\end{defi}
+
+\section{Kriterien für die Konvergenz im $p$-ten Mittel}
+	Wir suchen zunächst nach notwendigen Bedingungen:
+	\begin{enumerate}
+		\item $\norm{f_n}_p\to\norm{f}_p$, da 
+		\[ |\norm{f_n}_p-\norm{f}_p|\le \norm{f_n-f}_p. \]
+		\item $f_n\to f \text{ im Maß}$ aufgrund der Ungleichung von Markov
+		\[ \mu([|f_n-f|\ge \varepsilon])=\mu([|f_n-f|^p\ge \varepsilon^p])\le\frac{\int|f_n-f|^p}{\varepsilon^p}=\frac{\norm{f_n-f}_p^p}{\varepsilon^p} \]
+	\end{enumerate}
+
+	zusammen sind diese schon hinreichend:
+	\begin{satz}
+		\[ f_n\to_p f\Leftrightarrow (1)\text{ und }(2) \]
+	\end{satz}
+
+	\begin{bew}
+		am Donnerstag
+	\end{bew}
+
+	\begin{satz} [Riesz-Fischer]
+		Die $L_p$ sind vollständig. 
+	\end{satz}
+
+	\begin{satz} [Kriterium für $L_p$-Konvergenz]
+		Es ist äquivalent:
+		\[ \underbrace{f_n\to_p f}_C\Leftrightarrow \underbrace{f_n\to f\text{ im Maß } \norm{f_n}_p\to\norm{f}_p}_A \]
+		und
+		\[ f_n\to_p f\Leftrightarrow \underbrace{f_n \to f\text{ im Maß und } |f_n|^p \text{ gleichmäßig integrierbar}}_B \]
+	\end{satz}
+
+	\begin{bew}
+		Wir wissen schon $(C)\Rightarrow (A)$. \newline
+		Wir zeigen nun $(A)\Rightarrow (B)$. \newline
+		Behauptung: 
+		\[ |f_n|^p\Rightarrow |f|^p \text{ im Maß} \]
+		Es gilt
+		\[ \mu(||f_n|^p-|f|^p|>\varepsilon)\le\mu(||f_n|^p-|f|^p|>\varepsilon, |f_n|, |f|\le M)+\mu(|f_n|>M)+\mu(|f|>M) \]
+		\[ \le \mu(||f_n|^p-|f|^p>\varepsilon, |f_n|, |f|\le M)+\frac{\norm{f_n}_p^p}{M^p}+\frac{\norm{f}_p^p}{M^p} \]
+		Für $M$ hinreichend groß können wir die rechte Seite beliebig klein machen, damit folgt aus einem früheren Satz die gleichmäßige Integrierbarkeit.\newline
+		$(B)\Rightarrow (C)$: Es ist klarerweise $|f-f_n|$ integrierbar, damit erhalten wir
+		\[ \int|f-f_n|^p\to\int\underbrace{|f-f_n|^p}_0 = 0. \]
+	\end{bew}
+
+	\begin{bew}[Riesz-Fischer]
+		Sei $(f_n)$ eine Cauchy-Folge in $L_p$, also
+		\[ \lim_{n,m\to\infty}\norm{f_n-f_m}_p=0. \]
+		Es gilt
+		\[ \P(|f_n-f_m|\ge\varepsilon))\le\frac{\norm{f_n-f_m}^p}{\varepsilon^p}\to 0 \]
+		also ist $(f_n)$ eine Cauchyfolge im Maß. Daher 
+		\[ \exists f_n\to f\text{ im Maß} \]
+		\[ \exists f_{m_k}: f_{m_k}\to f \text{ fast überall} \]
+		also $f\in\mathcal{L}_p$. Damit auch
+		\[ |f_{m_k}|^p\to|f|^p\text{ fast überall} \]
+		und mit dem Lemma von Fatou:
+		\[ \int\liminf_{k\to\infty}|f_{m_k}|^p\le\liminf_{k\to\infty}\int|f_{m_k}|^p = \liminf_{k\to\infty}\norm{f_{m_k}}_p^p<\infty \]
+		Damit ist $f\in L_p$.\newline
+		Seien $n,m_k\ge n_0$, also
+		\[ \int|f_n-f_{m_k}|^p\le\varepsilon^p \]
+		und mit Fatou
+		\[ \int |f_m-f|^p\le\varepsilon^p, \]
+		damit sind die $L_p$ vollständig.  
+	\end{bew}
+
+	\begin{satz}
+		Für $1\le p\le\infty$ ist $L_p$ ein Banachraum. Für $p=2$ ist $L_2$ ein Hilbertraum, also die Norm ist von einem Skalarprodukt erzeugt, nämlich
+		\[ (f,g):=\int fgd\mu \]
+		bzw für komplexe Zahlen
+		\[ (f,g):=\int f\overline{g}d \mu \]
+	\end{satz}
+
+	\begin{bew}
+		Direkte Folgerung aus dem Riesz-Fischer.
+	\end{bew}
+
+	\begin{bem}
+		Sei $B$ ein Banachraum, dann ist der Dualraum $B^*=\{\ell: B\to\R, \ell\text{ linear und beschränkt}\}$, wobei beschränkt
+		\[ \exists c: |\ell(f)|\le c\norm{f} \]
+		bedeutet. Weiters ist
+		\[ \norm{\ell}=\sup_{\norm{f}\neq 0}\frac{|\ell(f)|}{\norm{f}}. \]
+	\end{bem}
+
+	\begin{bem}
+		Sei $f\in\mathcal{L}_p, g\in\mathcal{L}_q$, $\frac{1}{p}+\frac{1}{q}=1$, dann ist
+		\[ \int fg\le\norm{f}_p\cdot\norm{g}_p \]
+		und 
+		\[ \ell_g(f)=\int fg \]
+		ein lineares Funktional auf $\mathcal{L}_p$ und es gilt
+		\[ \norm{\ell_g}_{p^*}\le\norm{g}_q \]
+	\end{bem}
+	
+	\begin{satz}
+		Sei $f\in\mathcal{L}_p$, dann folgt
+		\[ \norm{f}_p=\sup\{\int fg: g\in\mathcal{L}_q, \norm{g}_q\le1\} \]
+	\end{satz}
+
+	\begin{bew}
+		Gilt $\norm{f}_p=0$, so ist die Behauptung klar.\newline
+		Sei also $\norm{f}_p>0$. Sei
+		\[ g(\omega)=\begin{cases}
+			0, \text{ wenn }f(\omega=0)\\
+			\frac{\overline{f}(\omega)\cdot|f(\omega)|^{p-2}}{|f|_p^{p-1}}, \text{ sonst}
+		\end{cases} \]
+		Nun gilt
+		\[ |g|=\frac{|f|^{p-1}}{\norm{f}_p^{p-1}}, \norm{g}_q=1 \]
+		und
+		\[ \int fg=\frac{1}{\norm{f}_p^{p-1}}\int|f|^p=\norm{f}_p. \]
+	\end{bew}
+
+	\begin{bsp}
+		Sei $\Omega=\R$, $\S=2^\Omega$, 
+		\[ \mu(A)=\begin{cases}
+		0: & |A|\le\aleph_0 \\ \infty: & \text{sonst}
+		\end{cases} \]
+		Es ist also $L_p=\{0\}$. 
+	\end{bsp}
+
+	\begin{satz}
+		Ist $\mu$ sigmaendlich, dann ist $|f|_p=\sup\{\int fg: g\in\mathcal{L}_p, \norm{g}_q=1\}$
+	\end{satz}
+	
+	\begin{satz}[Darstellungssatz von Riesz]
+		Für $1<p<\infty$ gilt
+		\[ L_p^*\cong L_q. \]
+		Ist $\mu$ sigmaendlich, dann ist
+		\[ L_1^*\cong L_\infty. \]
+		Ist $\mu$ endlich, so gilt
+		\[ l\in L_p^*\Rightarrow \exists! g\in L_q, \ell(f)=\int fgd\mu \]
+	\end{satz}
+
+	\begin{bew}
+		Sei $A\in\S$, $\nu(A)=\ell(A())$. Behauptung: $\nu$ ist signiertes Maß und $\nu \ll \mu$. Für $A=\sum_{n\in\N}, A_n\in\S$ muss also gelten
+		\[ \nu(A)=\sum_{n\in\N} \nu(A_n). \]
+		Wir zeigen zunächst die Additivität:
+		\[ \nu(A+B)=\ell(A+B)=\ell(A)+\ell(B)=\nu(A)+\nu(B) \]
+		Es gilt nun
+		\[ \mu(A)=\sum_{n\in\N} \mu(A_n) \]
+		und für $\varepsilon>0$ gibt es ein $N=N(\varepsilon)$, sodass
+		\[ \sum_{n>N}\mu(A_n)=\mu(\bigcup_{n>N}A_n)<\varepsilon \]
+		und natürlich
+		\[ A=A_1\cup ...\cup A_n\cup\bigcup_{n>N}A_n \]
+		also 
+		\[ \ell(A)=\ell(A_1)+...+\ell(A_n)+\ell\left(\bigcup_{n>N}A_n\right) \]
+		also
+		\[ |\ell(A)-\sum_{n=1}^N\ell(A_n)|\le|\ell\left(\sum_{n>N}A_n\right)|\le\norm{\ell}\cdot\norm{\sum_{n>N} A_n}_p \]
+		\[ \le \norm{\ell}\cdot\mu\left(\sum_{n>N}A_n\right)^\frac{1}{p} \]
+		\[ \Rightarrow \sum_{n=1}^N\ell(A_n)\stackrel{N\to\infty}{\longrightarrow}\ell(A) \]
+		und damit schließlich
+		\[ \nu(A)=\sum\nu(A_n) \]
+		Nun
+		\[ \exists g: \ell(A)=\int_A gd\mu \]
+		d.h. 
+		\[ \ell(f)=\int fgd\mu, \:\: f\text{ Indikator }\rightarrow \text{ Treppenfunktion }\rightarrow\text{ messbar }(\in\mathcal{L}_p) \]
+	\end{bew}
+
+	\begin{satz}
+		Ist $\mu$ sigmaendlich, dann ... (?)
+	\end{satz}
+
+	\begin{satz}
+		für $1<p<\infty$ kann auf die Sigmaendlichkeit verzichtet werden. (im Satz davor (?))
+	\end{satz}
