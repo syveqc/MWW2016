@@ -299,3 +299,65 @@
 	\begin{satz}
 		für $1<p<\infty$ kann auf die Sigmaendlichkeit verzichtet werden. (im Satz davor (?))
 	\end{satz}
+	
+	\begin{defi}
+		Das Lebesgue Integral eines signierten Maßes ist
+		\[ \int gd\mu:=\int gd\mu_+-\int gd\mu_- \]
+	\end{defi}
+	
+	\begin{bsp}
+		Sei $\mu$ ein komplexes Maß, also
+		\[ \mu(A)=\mu_1(A)+i\cdot \mu_2(A) \]
+		Nun betrachte
+		\[ \int_A f_1 d|\mu_1|+i\int_A f_2 d|\mu_2|. \]
+		Nach Satz von Radon-Nikodym ist für ein sigmaendliches $\mu$
+		\[ \nu(A)=\int_A f d\mu\Leftrightarrow \nu \ll \mu \]
+		Wir suchen also ein $\nu$ sodass $|\mu_1|\ll \nu$ und $|\mu_2|\ll \nu$. Wir setzen $\nu=|\mu_1|+|\mu_2|$. Es gibt nun ein $0\le g_1\le 1$ sodass
+		\[ |\mu_1|(A)=\int_A g_1d\nu \]
+		und für $g_2:=1-g_1$
+		\[ |\mu_2|(A)=\int_A g_2d\nu \]
+		Es ist also
+		\[ \mu(A)=\int_A f_1g_1 d\nu +\int if_2 g_2d\nu = \int_A (f_1g_1+if_2g_2)d\nu \]
+		Wir wissen $|f_1|=|f_2|=1$, also
+		\[ |f_1g_1|+|f_2g_2|=|g_1|+|g_2|=1 \]
+		Damit folgt
+		\[ =\int_A \underbrace{\frac{f_1g_1+if_2g_2)}{|f_1g_1+if_2g_2|}}_f\cdot \underbrace{|f_1g_1+if_2g_2|d\nu}_{d|\mu|}=\int_A fd|\mu| \]
+		Also
+		\[ |\mu|(A)=\int_A \overline{f}d\mu \]
+	\end{bsp}
+
+	\begin{bsp}
+		Sei $\mu$ ein signiertes Maß auf $(\R, \B)$. Dann ist
+		\[ F(x)=\mu(]-\infty,x])=\mu_+(]-\infty,x])-\mu_-(]-\infty,x])=F_+(x)-F_-(x) \]
+	\end{bsp}
+
+	\begin{defi}
+		Eine Funktion $f$ heißt von beschränkter Variation, falls es $g,h$ mit
+		\[ f=g-h \]
+		gibt und $g,h$ nicht fallend und beschränkt. 
+	\end{defi}
+
+	\begin{bem}
+		Das ist nicht die offizielle Version. 
+	\end{bem}
+
+	\begin{defi}
+		Es sei
+		\[ V_a^b f=V_{[a,b]} f=\sup\{\sum_{i=1}^n|f(t_i)-f(t_{i-1})|: n\in =t_0<t_1<...<t_n=b\} \]
+		\[V^{+/-}_{[a,b]} f=\sup\{\sum_{i=1}^n|(f(t_i)-f(t_{i-1}))_{+/-}|: n\in =t_0<t_1<...<t_n=b\} \]
+	\end{defi}
+
+	\begin{defi}[offiziell]
+		$f$ heißt von beschränkter Variation, wenn
+		\[ V_\R=\{V_{[a,b]} f, a<b, a,b\in\R\} \]
+		beschränkt ist. 
+	\end{defi}
+
+	\begin{defi}
+		Es ist
+		\[ F_+(x)=V_{]-\infty,x]}^+ F \]
+	\end{defi}
+
+	\begin{satz}
+		Die offizielle und inoffizielle Definition der beschränkten Variation sind äquivalent. 
+	\end{satz}
