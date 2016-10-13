@@ -361,3 +361,146 @@
 	\begin{satz}
 		Die offizielle und inoffizielle Definition der beschränkten Variation sind äquivalent. 
 	\end{satz}
+
+	\begin{bew}
+		Ana Übungsaufgabe.
+	\end{bew}
+
+	\begin{satz}
+		Es gilt 
+		\[ V_{[a,c]}f=V_{[a,b]} f+V_{[b,c]}f \]
+	\end{satz}
+
+	\begin{satz}
+		Sei $F(x):=\mu(]-\infty,x]), x\in\R, \mu$ endliches signiertes Maß auf $(\R, \B)$. Nun ist mit
+		\[ F_+(x)=V^+_{]-\infty,x]} F \]
+		\[ F_-(x)=V^-_{]-\infty,x]} F \]
+		\[ F(x)=V_{]-\infty,x]} F \]
+		die Verteilungsfunktion 
+		\[ F_+=\mu_+(]-\infty, x]) \]
+		usw.
+	\end{satz}
+
+	\begin{bew}
+		Wir beweisen exemplarisch die erste Behauptung:\newline
+		Wir zeigen $F_+(x)\ge V_{]-\infty,x]}^+ F$. Sei dazu $t_0<...<t_N=x$. Nun gilt
+		\[ \sum_{n=1}^N(F(t_n)-F(t_{n-1}))_+=\sum_{n=1}^N (\mu(]t_{n-1}, t_n]))_+=\sum_{n=1}^N (\mu_+(]t_{n-1}, t_n])-\mu_-(]t_{n-1}, t_n]))_+ \]
+		\[ \le \sum_{n=1}^N \mu_+(]t_{n-1}, t_n])=\mu_+(]t_0,x])\le \mu_+(]-\infty,x]) \]
+		Bleibt also noch $\le$ zu zeigen. Es ist 
+		\[ F_+(x)=\mu_+(]-\infty,x]) = \mu(]-\infty,x]\cap P) \]
+		Approximationssatz für Maßfunktionen: Sei $\mf{T}$ der Semiring der links-halboffenen Intervallen und $\mf{R}=\mf{R}(\mf{T})$. Dann gilt
+		\[ \forall A\in\mf{B}: \forall \varepsilon>0\exists B\in\mf{R}: \mu(A\Delta B)<\varepsilon  \]   
+		Sei also $\varepsilon>0$, dann 
+		\[ \exists B\subseteq]-\infty,x]: |\mu|(B\Delta(P\cap ]-\infty,x]))<\varepsilon \]
+		\[ |\mu|((]-\infty,x]\setminus B)\Delta(N\cap]-\infty,x])) \longleftarrow\text{  brauchen wir gar nicht...} \]
+		\[ \mu_+(B\Delta (P\cap]-\infty,x]))+\mu_-(B\Delta(P\cap]-\infty,x])) \]
+		\[ |\mu_+(B)-\mu_+(P\cap]-\infty,x])|<\varepsilon \land |\mu_-(B)-\mu_-(P\cap]-\infty,x])|<\varepsilon \]
+		Damit erhalten wir:
+		\[ \mu_+(B)\ge\mu_+(]-\infty,x])-\varepsilon \]
+		\[ \mu_-(B)\le\varepsilon \]
+		und somit
+		\[ \mu(B)\ge\mu_+(]-\infty,x])-2\varepsilon \]
+		Nun gilt
+		\[ B=\bigcup_{i=1}^n]a_i,b_i], a_i<b_i<a_{i+1} \]
+		Und damit
+		\[ \mu(B)=\sum_{i=1}^n F(b_i)-F(a_i)\ge\mu_+(]-\infty,x])-2\varepsilon \]
+		\[ \Rightarrow \sum_{i=1}^n (F(b_i)-F(a_i))_+\ge\mu_+(]-\infty,x])-2\varepsilon \]
+		woraus die Gleichheit irgendwie folgt.
+	\end{bew}
+
+	(???what???)
+	
+	\begin{satz}
+		Sei $\mathfrak{M}=\mf{M}(\Omega,\S,\mu)=\{\mu: \text{endliches, signiertes Maß}\}$. Dann ist die Variationsnorm
+		\[ \norm{\mu}_V:=|\mu|(\Omega) \]
+		eine Norm. Damit ist $(\mf{M}, \norm{\cdot}_V)$ ein Banachraum. 
+	\end{satz}
+
+	\begin{bew}
+		In der Übung.
+	\end{bew}
+
+	\begin{defi}
+		Es ist die Supremumsnorm
+		\[ \norm{\mu}_{\sup}=\sup\{|\mu(A)|: A\in\mf{B}\}. \]
+	\end{defi}
+
+	\begin{satz}
+		Die Supremumsnorm ist äquivalent zur Variationsnorm.
+	\end{satz}
+
+	\begin{bew}
+		Es ist
+		\[ |\mu(A)|\le|\mu|(A)\le|\mu|(\Omega)\le\norm{\mu}_V \]
+		und
+		\[ \norm{\mu}_V=|\mu|(\Omega)=\mu_+(\Omega)+\mu_-(\Omega)=\mu(P)-\mu(N)=|\mu(P)|+|\mu(N)|\le2\norm{\mu}_{\sup} \]
+	\end{bew}
+
+\section{Satz von Radon-Nikodym}
+	Frage: Wir haben einen Maßraum $(\Omega,\S,\mu)$ und $\nu$ Maß auf $(\Omega,\S)$. Wann kann $\nu$ als Integral bezüglich $\mu$ dargestellt werden. \newline
+	Eine Minimalforderung ist, dass 
+	\[ \mu(A)=0\Rightarrow \int_Afd\mu=0 \]
+	also muss auf jeden Fall aus $\mu(A)=0$ auch $\nu(A)=0$ folgen. Das heißt, dass $\nu\ll\mu$ gilt.
+	Auch die andere Richtung funktioniert:
+	
+	\begin{satz}[Radon-Nikodym]
+		Ist $\mu$ sigmaendlich und $\nu\ll\mu$, so existiert eine messbare Funktion $f\ge 0$, $f$ fast überall eindeutig, sodass
+		\[ \mu(A)=\int_A fd\mu \forall A\in\S \]
+	\end{satz} 
+
+	\begin{bem}
+		Sei $f:\Omega\to[0,\infty]$. Dann ist die Niveaumenge
+		\[ A_y:=[f>y]. \]
+		Dann kann man $f$ aus den $A_y$ rekonstruieren:
+		\[ f(\omega)=\sup\{y: \omega\in A_y\} \]
+		auch für abzählbar viele funktioniert das:
+		\[ f(\omega)=\sup\{y\in\Q: \omega\in A_y\} \]
+	\end{bem}
+
+	\begin{bew}
+		Sei $\mu$ endlich und $\nu\ll\mu$. Sei dann $(P_c, N_c)$ eine Hahnzerlegung von $\nu-c\mu$, $c\in\Q^+$. Ist nun $c>c'$, dann gilt $P_c\subseteq P_{c'}$? Nein leider nicht immer und überall... Aber es gilt
+		\[ A:=P_c\setminus P_{c'}=P_c\cap N_{c'} \]
+		also
+		\[ \nu(A)-c\mu(A)\ge 0 \]
+		\[ \nu(A)-c'\mu(A)\le 0 \]
+		also
+		\[ -c'\mu\le\nu(A)-c'\mu(A)\le  0\Rightarrow \nu(A)\le c'\mu(A)<\infty \]
+		\[ \nu(A)-c'\mu(A)\le\nu(A)-c\mu(A) \]
+		\[ (c-c')\mu(A)\le 0\Rightarrow \mu(A)=0 \]
+		Damit können wir oBdA annehmen, dass für $c>c'$ $P_c\subseteq P_{c'}$. Ist dies nämlich nicht so, so nehmen wir
+		\[ \tilde{P_c}:=P_c\setminus\left(\bigcup_{c'<c} A_{c,c'}\right) \]
+		Nun ist 
+		\[ f(\omega)=\sup\{c\in\Q: \omega\in P_c\}=\sup c\cdot P_c(\omega) \]
+		Damit ist sicherlich $f$ messbar und $\ge 0$. Wir müssen noch nachweisen, dass wirklich 
+		\[ \nu(A)=\int_A fd\mu \]
+		gilt:\newline
+		Sei also $A\in\S$ beliebig. Dann ist 
+		\[ [f=\infty] = \bigcup_{c\in\Q^+} P_c \]
+		und wir können 
+		\[ \int_A fd\mu=\int_{A\cap [f=\infty]} fd\mu+\int_{A\cap[f<\infty]} fd\mu \]
+		aufteilen. Wir betrachten also
+		\[ \int_{A\cap[f=\infty]} fd\mu=\int_{A\cap[f=\infty]}\infty d\mu=\begin{cases}
+			0: &\mu(A\cap[f=\infty])=0\\
+			\infty: &\text{sonst}
+			\end{cases} \]
+		Wir betrachten also den Fall $\mu(A\cap[f=\infty])>0$. Dann ist $[f=\infty]\subseteq P_c, \forall c\in \Q^+$. Also ist
+		\[ \nu(A\cap[f=\infty])-c\mu(A\cap[f=\infty])\ge 0 \]
+		\[ \Rightarrow \nu(A\cap[f=\infty])\ge c\cdot\mu(A\cap[f=\infty]) \]
+		also passt alles.\newline
+		Wir betrachten nun für $M\in\N$
+		\[ [ f<\infty]=\bigcup_{k=1}^\infty\left[\frac{k-1}{M}\le f<\frac{k}{M}\right] \]
+		und
+		\[ \nu\left(A\cap \underbrace{\left[\frac{k-1}{M}\le f<\frac{k}{M}\right]}_{=: ...}\right) \]
+		und wir erhalten
+		\[ \nu(A\cap ...)-\frac{k}{M}\mu(A\cap ...)\le 0 \]
+		\[ \nu(A\cap ...)-\frac{k-2}{M}\mu(A\cap ...)\ge 0 \]
+		also 
+		\[ \le\frac{k-2}{M}\mu(A\cap ...)\nu(A\cap[\frac{k-1}{M}f<\frac{k}{M}])\le \frac{k}{M}\mu(A\cap ...) \]
+		\[ \frac{k-1}{M}\mu(A\cap ...)\le\int_{A\cap ...} fd\mu\le \frac{k}{M}\mu(A\cap ...) \]
+		\[ ???\le\nu(A\cap ...)-\int f_{A\cap ...} fd\mu\le\frac{1}{M}\mu(A\cap ...) \]
+		Nun denken wir uns, dass wir das Integral jedes Mal auf der anderen Seite geschrieben hätten, summieren über alle $k$ und erhalten
+		\[ \int_{A\cap [f<\infty]} fd\mu-\frac{2}{M}\mu(A)\le\nu(A\cap[f<\infty])\le \int_{A\cap[f<\infty]} fd\mu+\frac{1}{M}\mu(A) \]
+		Damit können wir $M$ beliebig groß werden lassen, wodurch die Behauptung bewiesen ist. (oder so...)
+	\end{bew}
+
+	
